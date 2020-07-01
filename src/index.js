@@ -4,7 +4,7 @@ import App from "./App";
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-import reducers from "./reducers/index";
+import { categoriesReducer } from "./reducers/index";
 
 const middlewares = [thunk];
 let devTools =
@@ -14,9 +14,10 @@ if (process.env.NODE_ENV === "prod" || process.env.NODE_ENV === "production") {
 }
 
 const store = createStore(
-  reducers,
+  categoriesReducer,
   compose(applyMiddleware(...middlewares), devTools)
 );
+/* const store = createStore(reducers, applyMiddleware(...middlewares)); */
 
 ReactDOM.render(
   <Provider store={store}>

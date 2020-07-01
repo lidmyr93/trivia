@@ -1,24 +1,40 @@
-const initState = {
+import {
+  FETCH_CATEGORIES_PENDING,
+  FETCH_CATEGORIES_SUCCESS,
+  FETCH_CATEGORIES_ERROR,
+} from "../actions";
+
+const initialState = {
+  pending: false,
   categories: [],
-  questions: [],
+  error: null,
 };
 
-const reducer = (state = initState, action) => {
-    console.log('reducer',action)
+export function categoriesReducer(state = initialState, action) {
+  console.log(action);
   switch (action.type) {
-    case "GET_CATEGORIES":
+    case FETCH_CATEGORIES_PENDING:
       return {
         ...state,
+        pending: true,
+      };
+    case FETCH_CATEGORIES_SUCCESS:
+      return {
+        ...state,
+        pending: false,
         categories: action.payload,
       };
-      case "GET_QUESTIONS" :
-          return {
-              ...state,
-              questions: [...action.payload],
-          }
-      default:
-          return {...state};
+    case FETCH_CATEGORIES_ERROR:
+      return {
+        ...state,
+        pending: false,
+        error: action.error,
+      };
+    default:
+      return state;
   }
-};
+}
 
-export default reducer;
+export const getCategories = (state) => state.categories;
+export const getCategoriesPending = (state) => state.pending;
+export const getCategoriesError = (state) => state.error;

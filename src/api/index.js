@@ -1,17 +1,21 @@
+import {
+  fetchCategoriesPending,
+  fetchCategoriesSuccess,
+  fetchCategoriesError,
+} from "../actions";
 
-/* function getQuestions(){
-    const url =
-} */
+function fetchCategories() {
+  return (dispatch) => {
+    dispatch(fetchCategoriesPending());
 
-export const getCategories = async () => {
-    try{
-        const res = await fetch("https://opentdb.com/api_category.php");
-        const result = await res.json();
-        console.log(result)
-        return result;
-    }
-    catch (e){
-        console.log(e)
-        return null;
-    }
+    fetch("https://opentdb.com/api_category.php")
+      .then((res) => res.json())
+      .then((res) => {
+        dispatch(fetchCategoriesSuccess(res.trivia_categories));
+
+        return res.trivia_categories;
+      })
+      .catch((error) => dispatch(fetchCategoriesError(error)));
+  };
 }
+export default fetchCategories;

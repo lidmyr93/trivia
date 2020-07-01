@@ -1,20 +1,23 @@
+export const FETCH_CATEGORIES_PENDING = "FETCH_CATEGORIES_PENDING";
+export const FETCH_CATEGORIES_SUCCESS = "FETCH_CATEGORIES_SUCCESS";
+export const FETCH_CATEGORIES_ERROR = "FETCH_CATEGORIES_ERROR";
 
-import { getCategories } from "../api";
-
-
-export async function loadCategories() {
-  return(dispatch)=>{
-    return getCategories().then(response => {
-      dispatch(setCategories(response))
-    })
-  }
+export function fetchCategoriesPending() {
+  return {
+    type: FETCH_CATEGORIES_PENDING,
+  };
 }
 
-
-
-function setCategories(data){
+export function fetchCategoriesSuccess(categories) {
   return {
-    type: "GET_CATEGORIES",
-    payload: data
-  }
+    type: FETCH_CATEGORIES_SUCCESS,
+    payload: categories,
+  };
+}
+
+export function fetchCategoriesError(error) {
+  return {
+    type: FETCH_CATEGORIES_ERROR,
+    error: error,
+  };
 }
