@@ -21,3 +21,5 @@ export function fetchCategoriesError(error) {
     error: error,
   };
 }
+
+

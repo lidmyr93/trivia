@@ -1,40 +1,16 @@
-import {
-  FETCH_CATEGORIES_PENDING,
-  FETCH_CATEGORIES_SUCCESS,
-  FETCH_CATEGORIES_ERROR,
-} from "../actions";
 
-const initialState = {
+
+import {combineReducers} from "redux";
+import categoriesReducer from "./categoryReducer";
+import questionReducer from "./questionReducer";
+
+export const initialState = {
   pending: false,
   categories: [],
   error: null,
-};
-
-export function categoriesReducer(state = initialState, action) {
-  console.log(action);
-  switch (action.type) {
-    case FETCH_CATEGORIES_PENDING:
-      return {
-        ...state,
-        pending: true,
-      };
-    case FETCH_CATEGORIES_SUCCESS:
-      return {
-        ...state,
-        pending: false,
-        categories: action.payload,
-      };
-    case FETCH_CATEGORIES_ERROR:
-      return {
-        ...state,
-        pending: false,
-        error: action.error,
-      };
-    default:
-      return state;
-  }
+  questions : []
 }
 
-export const getCategories = (state) => state.categories;
-export const getCategoriesPending = (state) => state.pending;
-export const getCategoriesError = (state) => state.error;
+
+
+export const rootReducer = combineReducers({categories : categoriesReducer, questions: questionReducer})
