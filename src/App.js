@@ -12,6 +12,8 @@ import {
 import {fetchCategories, fetchQuestions} from "./api";
 import CategorySelector from "./components/category-selector";
 import StartButton from "./components/StartButton";
+import {addPlayer} from "./actions/game"
+import GameSetup from "./components/game-setup";
 
 class App extends React.Component {
   state = {
@@ -37,10 +39,9 @@ class App extends React.Component {
     return !this.state.loading ? (
       <div>
         <h1>trivia</h1>
-        {this.props.categories && (
-          <CategorySelector categories={this.props.categories} selectedCategory={this.state.selectedCategoryId} handleCategory={this.handleCategory}/>
-          )}
-          <StartButton />
+        
+          <GameSetup />
+         
       </div>
     ) : (
       <div>Loading</div>
@@ -57,5 +58,6 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
   fetchCategories,
-  fetchQuestions
+  fetchQuestions,
+  addPlayer
 })(App);

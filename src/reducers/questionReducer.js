@@ -3,7 +3,7 @@ import {
   FETCH_QUESTIONS_PENDING,
   FETCH_QUESTIONS_SUCCESS,
 } from "../actions/question";
-import { initialState } from "./index";
+
 
 export default function questionReducer(state = [], action) {
   console.log("question");

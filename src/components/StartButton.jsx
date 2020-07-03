@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
  const StartButton = () => {
     const dispatch = useDispatch()
-    const category = "";
+    
     const handleClick = () => {
        return  dispatch(fetchQuestions())
     }
