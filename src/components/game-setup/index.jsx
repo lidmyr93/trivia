@@ -3,11 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import CategorySelector from "../category-selector";
 import StartButton from "../StartButton";
 import { addPlayer } from "../../actions/game";
+import DifficultySelector from "../difficulty-selector";
+import TypeSelector from "../type-selector/TypeSelector"
 
 const GameSetup = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
+  const [range, setRange] = useState(25);
   const handleChange = (e) => setName(e.target.value);
+  const handleSlide = (e) => setRange(e.target.value)
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(addPlayer(name));
@@ -16,8 +20,12 @@ const GameSetup = () => {
   return (
     <div>
       <CategorySelector />
-      )}
-      {/* <StartButton selectedCategoryId={this.state.selectedCategoryId} /> */}
+      <div>
+        <input type="range" value ={range}min="10" max="50" step="1" onChange={(e) => handleSlide(e)}/>
+        <span>{range}</span>
+      </div>
+      <DifficultySelector />
+      <TypeSelector />
       {/* Addplayers */}
       <form>
         <label htmlFor="playername">Add player</label>
@@ -29,6 +37,7 @@ const GameSetup = () => {
         />
         <button onClick={(e) => onSubmit(e)}>Add</button>
       </form>
+      <StartButton numberOfQuestions={range}/>
     </div>
   );
 };

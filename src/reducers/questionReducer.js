@@ -6,7 +6,6 @@ import {
 
 
 export default function questionReducer(state = [], action) {
-  console.log("question");
   switch (action.type) {
     case FETCH_QUESTIONS_PENDING:
       return {

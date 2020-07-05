@@ -14,6 +14,7 @@ import CategorySelector from "./components/category-selector";
 import StartButton from "./components/StartButton";
 import {addPlayer} from "./actions/game"
 import GameSetup from "./components/game-setup";
+import Players from "./components/players/Players";
 
 class App extends React.Component {
   state = {
@@ -28,11 +29,7 @@ class App extends React.Component {
   }
 
 
-  handleCategory = (category) => {
-    return this.setState({  
-      ...this.state, selectedCategoryId: category
-    })
-  }
+ 
 
   render() {
     
@@ -41,6 +38,7 @@ class App extends React.Component {
         <h1>trivia</h1>
         
           <GameSetup />
+          <Players />
          
       </div>
     ) : (

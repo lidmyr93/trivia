@@ -5,11 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 
- const StartButton = () => {
+ const StartButton = ({numberOfQuestions}) => {
     const dispatch = useDispatch()
-    
+    const game = useSelector(state => state.game);
+    const category = game && game.category;
     const handleClick = () => {
-       return  dispatch(fetchQuestions())
+       return  dispatch(fetchQuestions(category, numberOfQuestions))
     }
     return <button onClick={handleClick}>Start</button>
 }

@@ -1,8 +1,7 @@
 import React from "react";
-
-
 import { useSelector, useDispatch } from "react-redux";
 import { gameSetCategory } from "../../actions/game";
+
 const CategorySelector = () => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories.categories);
@@ -20,7 +19,9 @@ const CategorySelector = () => {
           {categories.map((category) => (
             <option value={category.id} key={category.id}>
               {category.name}
+              
             </option>
+            
           ))}
         </select>
       </div>

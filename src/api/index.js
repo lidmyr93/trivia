@@ -30,7 +30,7 @@ export function fetchQuestions(category, amount){
   return (dispatch) => {
     dispatch(fetchQuestionsPending());
 
-    fetch("https://opentdb.com/api.php?amount=10")
+    fetch(`https://opentdb.com/api.php?amount=${amount}&category=${category}`)
     .then((res) => res.json())
     .then((res) => {
       console.log(res.results)
