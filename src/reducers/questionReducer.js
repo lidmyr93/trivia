@@ -16,7 +16,7 @@ export default function questionReducer(state = [], action) {
       return {
         ...state,
         pending: false,
-        categories: action.payload,
+        questions: action.payload,
       };
     case FETCH_QUESTIONS_ERROR:
       return {

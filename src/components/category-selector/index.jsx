@@ -1,11 +1,22 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { gameSetCategory } from "../../actions/game";
+import { fetchCheckQuestions } from "../../api";
 
 const CategorySelector = () => {
   const dispatch = useDispatch();
-  const categories = useSelector((state) => state.categories.categories);
-  const handleCategory = (value) => dispatch(gameSetCategory(value));
+  const cats = useSelector((state) => state.categories);
+  const categories = cats && cats.categories;
+  const handleCategory = (value) => {
+    
+    dispatch(gameSetCategory(value))
+    
+    //apicall to check amount of avaible questions
+    //dispatch that number for the rangeselector to use
+    //value
+    dispatch(fetchCheckQuestions(value))
+    
+  };
 
   return categories ? (
     <div>

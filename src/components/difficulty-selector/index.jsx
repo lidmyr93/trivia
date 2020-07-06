@@ -27,7 +27,7 @@ const DifficultySelector = () => {
                 {x}
             </option>
         ))}
-        </select>
+        </select>   
       </div>
     </div>
   );

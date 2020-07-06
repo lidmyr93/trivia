@@ -1,6 +1,6 @@
 
 export class Player {
-    constructor(name,score = []) {
+    constructor(name, score = 4) {
             this.name = name;
             this.score = score;
     }
