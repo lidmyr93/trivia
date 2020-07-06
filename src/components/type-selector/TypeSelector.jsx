@@ -10,9 +10,8 @@ const TypeSelector = () => {
         
     }
   const options = {
-    easy : "easy",
-    medium : "medium",
-    hard: "hard"
+    boolean : "True/false",
+    multiple : "Multiple"
   };
   return (
     <div>
@@ -25,7 +24,7 @@ const TypeSelector = () => {
         >
         {Object.keys(options).map(x => (
             <option value={x} key={x}>
-                {x}
+                {options[x]}
             </option>
         ))}
         </select>

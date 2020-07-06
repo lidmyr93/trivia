@@ -25,12 +25,12 @@ export function fetchCategories() {
 }
 
 
-export function fetchQuestions(category, amount){
+export function fetchQuestions(category, amount, difficulty, type){
   console.log(category, amount)
   return (dispatch) => {
     dispatch(fetchQuestionsPending());
 
-    fetch(`https://opentdb.com/api.php?amount=${amount}&category=${category}`)
+    fetch(`https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=${type}`)
     .then((res) => res.json())
     .then((res) => {
       console.log(res.results)
