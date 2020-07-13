@@ -58,10 +58,10 @@ export function addPlayer(name) {
 
     if (game.players.length >= 1) {
       return dispatch(
-        gameAddPlayer([...game.players, new Player(name, game.players.length)])
+        gameAddPlayer([...game.players, new Player(name)])
       );
     }
-    return dispatch(gameAddPlayer([new Player(name, game.players.length)]));
+    return dispatch(gameAddPlayer([new Player(name)]));
   };
 }
 

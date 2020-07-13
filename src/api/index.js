@@ -43,7 +43,6 @@ export function fetchQuestions(category, amount = 50, difficulty, type) {
     fetch(`https://opentdb.com/api.php?amount=${amount}&category=${category}&token=${token}`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.results);
         dispatch(fetchQuestionsSuccess(res.results));
         dispatch(gameStartGame());
         return res.results;

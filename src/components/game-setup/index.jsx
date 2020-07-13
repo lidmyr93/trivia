@@ -47,6 +47,7 @@ const GameSetup = () => {
         />
         <button onClick={(e) => onSubmit(e)}>Add</button>
       </form>
+      
       <StartButton numberOfQuestions={range} />
     </div>
   );

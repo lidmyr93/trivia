@@ -1,18 +1,23 @@
 import React from "react";
 import Players from "../players/Players";
+import Question from "../question/Question";
+
 
 const Game = () => {
+  
+  
   return (
     <div>
-      <h1>this da game</h1>
-      <Players />
       
-      {/* 
-        TODO: Show the first question inline with correspeonding player and action
-        shift the first question from redux and put it in "used questions array"
-        once reached 50 questions in the game refetch questuons with the help of session token that
-        needs to be implemented... if not any player has met the requirement to win
-        in wich case scrap the session token to gain access to all questions again  
+      <Players />
+      <Question />
+      
+
+    {/* TODO:
+      Write logic to grab first player in turn to answer first question,
+      logic for that action is needed, then calculate next players turn and show a new question,
+      Also check when questions are running out to re-fetch questions with the help
+      of session token.
     */}
     </div>
   );
